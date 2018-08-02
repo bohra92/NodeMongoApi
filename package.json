@@ -1,0 +1,14 @@
+{
+  "name": "nodemongoapi",
+  "version": "1.0.0",
+  "description": "NODEjs Api testing using mongodb",
+  "main": "app.js",
+  "scripts": {
+    "test": "node app"
+  },
+  "author": "Tanuj Bohra",
+  "license": "ISC",
+  "dependencies": {
+    "mongodb": "^2.2.5"
+  }
+}
