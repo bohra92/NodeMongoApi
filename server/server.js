@@ -19,7 +19,7 @@ var app = express();
 app.use(bodyParser.json());
 
 app.post('/bbc', (req, res) => {
-  var todo = new offshoreMember({
+  var member = new offshoreMember({
     firstName: req.body.firstName,
     middleName: req.body.middleName,
     lastName: req.body.lastName,
@@ -31,7 +31,7 @@ app.post('/bbc', (req, res) => {
 
   });
 
-  todo.save().then((doc) => {
+  member.save().then((doc) => {
     res.send(doc);
   }, (e) => {
     res.status(400).send(e)
@@ -39,7 +39,7 @@ app.post('/bbc', (req, res) => {
 })
 
 app.post('/todos', (req, res) => {
-  var member = new Todo({
+  var todo = new Todo({
     name: req.body.name
   });
 
@@ -50,6 +50,8 @@ app.post('/todos', (req, res) => {
   })
 })
 
-app.listen(3000, () => {
-  console.log("Up and listening on 3000...");
+app.listen(2002, () => {
+  console.log("Up and listening on 3002...");
 })
+
+module.exports = {app};
