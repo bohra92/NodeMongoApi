@@ -34,6 +34,7 @@ var offshoreMember = mongoose.model('offshoreMember', {
     type: String,
     minlength: 3,
     trim: true,
+    required: true
   },
   hometown: {
     type: String,
@@ -44,23 +45,6 @@ var offshoreMember = mongoose.model('offshoreMember', {
 module.exports = {
   offshoreMember
 }
-//
-// var newMember = new offshoreMember({
-//   firstName: "Tanuj",
-//   lastName: "Bohra",
-//   age: "26",
-//   moduleName: "Childrens",
-//   experience: "3yrs",
-//   email: "bohratanuj@gmail.com",
-//   hometown: "Jodhpur"
-// })
-//
-// newMember.save().then((doc) => {
-//   console.log('Saved Member at offshore', doc);
-// }, (e) => {
-//   console.log("Error", e);
-// })
-
 // {
 // 	  "firstName": "Tanuj",
 //   "lastName": "Bohra",

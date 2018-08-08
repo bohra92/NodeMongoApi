@@ -17,20 +17,8 @@ var User = mongoose.model('User', {
   age: {
     type: Number
   }
-
 })
 
-module.exports = {User}
-
-//
-// var newUser = new User({
-//
-//   email : "bohratanuj@gmail",
-//   age: "26"
-// })
-//
-// newUser.save().then((doc) => {
-//   console.log('Saved User', doc);
-// }, (e) => {
-//   console.log("Error" , e);
-// })
+module.exports = {
+  User
+}

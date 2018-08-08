@@ -18,7 +18,7 @@ var {
 } = require('./models/offshore');
 
 var app = express();
-
+const port = process.env.PORT || 3000
 app.use(bodyParser.json());
 
 app.post('/bbc', (req, res) => {
@@ -72,8 +72,8 @@ app.post('/todos', (req, res) => {
   })
 })
 
-app.listen(5000, () => {
-  console.log("Up and listening on 3000...");
+app.listen(port, () => {
+  console.log(`Up and listening on ${port}...`);
 })
 
 module.exports = {

@@ -4,18 +4,24 @@
   "description": "NODEjs Api testing using mongodb",
   "main": "app.js",
   "scripts": {
+    "start":"node server/server.js",
     "test": "mocha server/tests/*.test.js"
+  },
+  "engines":{
+    "node":"9.11.1"
   },
   "author": "Tanuj Bohra",
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.15.2",
-    "expect": "^23.4.0",
     "express": "^4.14.0",
-    "mocha": "^5.2.0",
     "mongodb": "^2.2.5",
     "mongoose": "^4.5.9",
-    "nodemon": "^1.18.3",
-    "supertest": "^3.1.0"
+  },
+  "devDependencies": {
+    "supertest": "^3.1.0",
+    "mocha": "^5.2.0",
+    "expect": "^1.20.2",
+    "nodemon": "^1.18.3"
   }
 }
