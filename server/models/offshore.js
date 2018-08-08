@@ -34,7 +34,6 @@ var offshoreMember = mongoose.model('offshoreMember', {
     type: String,
     minlength: 3,
     trim: true,
-    required: true
   },
   hometown: {
     type: String,

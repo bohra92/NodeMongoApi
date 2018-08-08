@@ -1,5 +1,8 @@
 const express = require('express');
 const bodyParser = require('body-parser');
+const {
+  ObjectID
+} = require('mongodb')
 
 var {
   mongoose
@@ -28,9 +31,7 @@ app.post('/bbc', (req, res) => {
     experience: req.body.experience,
     email: req.body.email,
     hometown: req.body.hometown
-
   });
-
   member.save().then((doc) => {
     res.send(doc);
   }, (e) => {
@@ -38,11 +39,32 @@ app.post('/bbc', (req, res) => {
   })
 })
 
+app.get('/bbc/:id', (req, res) => {
+  let id = req.params.id
+  if (!ObjectID.isValid(id)) {
+    return res.send('Object id not Valid!!!')
+  }
+  offshoreMember.findById(id).then((member) => {
+    if (!member) {
+      return res.send('No records found with this object id')
+    }
+    res.send(member)
+  }).catch(err => {
+    res.send('Outside catch')
+  })
+})
+
+app.get('/bbc', (req, res) => {
+  offshoreMember.find().then((docs) => {
+    res.send(docs)
+  })
+
+})
+
 app.post('/todos', (req, res) => {
   var todo = new Todo({
     name: req.body.name
   });
-
   todo.save().then((doc) => {
     res.send(doc);
   }, (e) => {
@@ -50,8 +72,10 @@ app.post('/todos', (req, res) => {
   })
 })
 
-app.listen(2002, () => {
-  console.log("Up and listening on 3002...");
+app.listen(5000, () => {
+  console.log("Up and listening on 3000...");
 })
 
-module.exports = {app};
+module.exports = {
+  app
+};
