@@ -1,4 +1,5 @@
 const express = require('express');
+const _ = require('lodash');
 const bodyParser = require('body-parser');
 const {
   ObjectID
@@ -61,6 +62,43 @@ app.get('/bbc', (req, res) => {
 
 })
 
+app.delete('/bbc/:id',(req,res)=>{
+  let id = req.params.id
+  if (!ObjectID.isValid(id)) {
+    return res.send('Object id not Valid!!!')
+  }
+  offshoreMember.findByIdAndRemove(id).then((member) => {
+    if (!member) {
+      return res.send('No records found with this object id')
+    }
+
+    res.send(member);
+
+  }).catch(err => {
+    res.send('Outside catch')
+  })
+})
+
+
+app.patch('/bbc/:id',(req,res)=>{
+  let id = req.params.id;
+  let body = _.pick(req.body,["firstName","middleName","lastName","age","moduleName","experience","email","hometown"])
+  if (!ObjectID.isValid(id)) {
+    return res.send('Object id not Valid!!!')
+  }
+  offshoreMember.findByIdAndUpdate(id,{$set: body},{new:true}).then((member) => {
+    if (!member) {
+      return res.send('No records found with this object id')
+    }
+
+    res.send(member);
+
+  }).catch(err => {
+    res.send('Outside catch')
+  })
+})
+
+
 app.post('/todos', (req, res) => {
   var todo = new Todo({
     name: req.body.name
@@ -71,6 +109,7 @@ app.post('/todos', (req, res) => {
     res.status(400).send(e)
   })
 })
+
 
 app.listen(port, () => {
   console.log(`Up and listening on ${port}...`);
